@@ -26,14 +26,9 @@ class DoubantopSpider(Spider):
             item['score'] = movie.xpath('.//div[@class="star"]/span[@class="rating_num"]/text()').extract_first()
             item['score_num'] = movie.xpath('.//div[@class="star"]/span/text()').re(ur'(\d+)人评价')[0]
             yield item
-            print item['ranking'],item['movie_name'],item['score'],item['score_num']
-
-        # next_url = response.xpath('.//span[@class="next"]/a/@href').extract()
-        # if next_url:
-        #     next_url = 'https://movie.douban.com/top250' + next_url[0]
-        #     yield Request(next_url,headers=self.headers)
+            print item['ranking'],item['movie_name'],item['score'],item['score_num'] 
 
         next_url = response.xpath('//span[@class="next"]/a/@href').extract()
         if next_url:
             next_url = 'https://movie.douban.com/top250' + next_url[0]
-            yield Request(url=next_url, headers=self.headers,callback=self.parse)
+            yield Request(url=next_url, headers=self.headers)
