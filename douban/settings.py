@@ -70,7 +70,8 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # 'douban.Middlewares.user_agent_middleware.RandomUserAgentMiddleware': 543,
-   'douban.middlewares.RandomUserAgentMiddleware': 1,
+   # 'douban.middlewares.RandomUserAgentMiddleware': 1,
+   'douban.Middleware.user_agent_middleware.RandomUserAgentMiddleware': 1
 }
 RANDOM_UA_TYPE = 'random'
 
