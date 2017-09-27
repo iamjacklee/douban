@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
 from fake_useragent import UserAgent
 class RandomUserAgentMiddleware(object):
     def __init__(self, crawler):
@@ -17,5 +12,4 @@ class RandomUserAgentMiddleware(object):
     def process_request(self, request, spider):
         def get_ua():
             return getattr(self.ua, self.ua_type)
-        user_agent_random=get_ua()
-        request.headers.setdefault("User-Agent", user_agent_random)
+        request.headers.setdefault("User-Agent", get_ua())
